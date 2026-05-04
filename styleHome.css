@@ -6,6 +6,14 @@
 }
 
 /* ===== GENERAL ===== */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: #20252b;
@@ -15,7 +23,7 @@ body {
 /* ===== PAGE BACKGROUND ===== */
 .home-page {
   min-height: 100vh;
-  padding: 60px 28px;
+  padding: clamp(24px, 5vw, 60px) clamp(14px, 4vw, 28px);
 
   background:
     radial-gradient(circle at top left, rgba(15, 191, 132, 0.24), transparent 34%),
@@ -30,15 +38,15 @@ body {
 /* ===== MAIN CARD ===== */
 .hero-card {
   width: min(1300px, 94%);
-  min-height: 650px;
+  min-height: min(650px, calc(100vh - 80px));
 
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 36px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: clamp(24px, 4vw, 36px);
 
   background-color: rgba(247, 247, 247, 0.96);
-  border-radius: 34px;
-  padding: 58px;
+  border-radius: clamp(24px, 4vw, 34px);
+  padding: clamp(28px, 5vw, 58px);
 
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -49,6 +57,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
 }
 
 .page-label {
@@ -60,7 +69,7 @@ body {
   background-color: #f0f7f4;
   color: #0b5d3b;
 
-  font-size: 14px;
+  font-size: clamp(12px, 2.5vw, 14px);
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -70,27 +79,28 @@ body {
   margin: 0 0 14px;
 
   font-family: "Georgia", serif;
-  font-size: clamp(54px, 7vw, 96px);
-  line-height: 1;
+  font-size: clamp(38px, 8vw, 82px);
+  line-height: 1.03;
   color: #0b5d3b;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .hero-content h2 {
-  margin: 0 0 26px;
+  margin: 0 0 24px;
 
-  font-size: clamp(25px, 3vw, 38px);
+  font-size: clamp(20px, 4vw, 34px);
+  line-height: 1.25;
   color: #d94b17;
   font-weight: 700;
 }
 
 .hero-content p {
   max-width: 760px;
-  margin: 0 0 36px;
+  margin: 0 0 32px;
 
-  font-size: 19px;
-  line-height: 1.8;
+  font-size: clamp(15px, 2.8vw, 19px);
+  line-height: 1.75;
   color: #4b5563;
 }
 
@@ -98,13 +108,13 @@ body {
 .btn-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
   margin-bottom: 22px;
 }
 
 .btn {
-  min-height: 52px;
-  padding: 14px 22px;
+  min-height: 50px;
+  padding: 13px 20px;
 
   border-radius: 16px;
   text-decoration: none;
@@ -114,7 +124,7 @@ body {
   justify-content: center;
   gap: 10px;
 
-  font-size: 16px;
+  font-size: clamp(14px, 2.5vw, 16px);
   font-weight: 700;
 
   transition:
@@ -167,7 +177,7 @@ body {
   gap: 10px;
 
   color: #0b5d3b;
-  font-size: 16px;
+  font-size: clamp(14px, 2.5vw, 16px);
   font-weight: 700;
   text-decoration: none;
 }
@@ -178,15 +188,16 @@ body {
 
 /* ===== SOCIAL LINKS ===== */
 .social-links {
-  margin-top: 30px;
+  margin-top: 28px;
 
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 .social-links a {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
 
   border-radius: 50%;
   background-color: #20252b;
@@ -196,7 +207,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  font-size: 21px;
+  font-size: 20px;
   text-decoration: none;
 
   transition:
@@ -212,7 +223,7 @@ body {
 /* ===== RIGHT SIDE ===== */
 .hero-side {
   border-radius: 28px;
-  padding: 36px;
+  padding: clamp(24px, 4vw, 36px);
 
   background:
     radial-gradient(circle at top, rgba(22, 201, 141, 0.28), transparent 34%),
@@ -224,10 +235,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 28px;
+  gap: clamp(20px, 4vw, 28px);
 
   position: relative;
   overflow: hidden;
+  min-width: 0;
 }
 
 .hero-side::before {
@@ -246,8 +258,8 @@ body {
 
 /* ===== PROFILE CIRCLE ===== */
 .profile-circle {
-  width: 175px;
-  height: 175px;
+  width: clamp(118px, 18vw, 175px);
+  height: clamp(118px, 18vw, 175px);
   border-radius: 50%;
 
   background: linear-gradient(135deg, #0b5d3b, #16c98d);
@@ -257,7 +269,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  font-size: 54px;
+  font-size: clamp(36px, 7vw, 54px);
   font-weight: 700;
   letter-spacing: 3px;
 
@@ -271,7 +283,7 @@ body {
 /* ===== INFO CARD ===== */
 .info-card {
   width: 100%;
-  padding: 26px;
+  padding: clamp(20px, 4vw, 26px);
 
   border-radius: 24px;
   background-color: rgba(255, 255, 255, 0.09);
@@ -286,14 +298,14 @@ body {
 .info-card h3 {
   margin: 0 0 10px;
 
-  font-size: 22px;
+  font-size: clamp(18px, 3.5vw, 22px);
   color: #16c98d;
 }
 
 .info-card p {
   margin: 0;
 
-  font-size: 16px;
+  font-size: clamp(14px, 2.8vw, 16px);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.82);
 }
@@ -303,7 +315,7 @@ body {
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 
   position: relative;
@@ -311,7 +323,7 @@ body {
 }
 
 .mini-stats div {
-  padding: 22px 14px;
+  padding: 20px 12px;
 
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.09);
@@ -323,7 +335,7 @@ body {
   display: block;
   margin-bottom: 6px;
 
-  font-size: 28px;
+  font-size: clamp(23px, 5vw, 28px);
   color: white;
 }
 
@@ -335,16 +347,19 @@ body {
 /* ===== RESPONSIVE - TABLET ===== */
 @media (max-width: 1000px) {
   .home-page {
-    padding: 42px 20px;
+    align-items: flex-start;
+    padding: 32px 18px;
   }
 
   .hero-card {
     grid-template-columns: 1fr;
-    padding: 42px;
+    width: min(760px, 96%);
+    min-height: auto;
+    padding: 36px;
   }
 
   .hero-side {
-    min-height: 420px;
+    min-height: auto;
   }
 
   .hero-content {
@@ -366,25 +381,37 @@ body {
 /* ===== RESPONSIVE - MOBILE ===== */
 @media (max-width: 600px) {
   .home-page {
-    padding: 28px 14px;
+    display: block;
+    min-height: auto;
+    padding: 20px 12px 36px;
   }
 
   .hero-card {
     width: 100%;
-    padding: 28px;
-    border-radius: 26px;
+    min-height: auto;
+    padding: 22px;
+    border-radius: 24px;
+    gap: 24px;
+  }
+
+  .page-label {
+    margin-bottom: 14px;
+    letter-spacing: 1.4px;
   }
 
   .hero-content h1 {
-    font-size: 48px;
+    font-size: clamp(34px, 11vw, 46px);
   }
 
   .hero-content h2 {
-    font-size: 24px;
+    font-size: clamp(19px, 6vw, 24px);
+    margin-bottom: 20px;
   }
 
   .hero-content p {
-    font-size: 16px;
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 24px;
   }
 
   .btn-group {
@@ -394,6 +421,7 @@ body {
 
   .btn {
     width: 100%;
+    min-height: 48px;
   }
 
   .download-link {
@@ -401,17 +429,39 @@ body {
   }
 
   .hero-side {
-    padding: 28px;
+    padding: 22px;
+    border-radius: 22px;
     min-height: auto;
   }
 
   .profile-circle {
-    width: 135px;
-    height: 135px;
-    font-size: 40px;
+    width: 118px;
+    height: 118px;
+    font-size: 34px;
+    border-width: 6px;
+  }
+
+  .info-card {
+    text-align: center;
   }
 
   .mini-stats {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ===== VERY SMALL PHONES ===== */
+@media (max-width: 380px) {
+  .hero-card {
+    padding: 18px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .social-links a {
+    width: 42px;
+    height: 42px;
   }
 }
