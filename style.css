@@ -1,48 +1,40 @@
 /* for all the elements in the page */
 * {
-  margin: 0; /* no margin */
-  padding: 0; /* no padding */
-  box-sizing: border-box; /* The width includes the content + padding + border */
+  margin: 0;/* no margin*/
+  padding: 0;/* no padding*/
+  box-sizing: border-box;/* The width includes the content + padding + border */
 }
 
 html,
 body {
-  width: 100%;
-  min-height: 100%;
-  overflow-x: hidden; /* Prevents horizontal scrolling */
-  overflow-y: auto; /* Allows vertical scrolling when needed */
+  overflow: hidden; /*Prevents scrolling*/
 }
 
 body {
-  font-family: "Segoe UI", sans-serif; /* The browser will first try to use Segoe UI. If not, it will use a generic sans-serif font. */
+  font-family: "Segoe UI", sans-serif;/*The browser will first try to use Segoe UI. If not, it will use a generic sans-serif font. */ 
   background-color: #f9f9f9;
-  color: #333; /* text color */
-  display: flex; /* Turns the body into a Flexbox container */
-  min-height: 100vh;
+  color: #333;/* text color */
+  display: flex;/*Turns the body into a Flexbox container*/
 }
 
-/* Side navigation panel */
-.nav-panel {
-  /* This element is a flex item because its parent has display: flex. */
+
+.nav-panel {/*This element is a flex item because its parent has display: flex.*/
   background-color: #1f2937;
   color: #fff;
-  padding: 20px;
-  width: 260px;
-  min-height: 100vh;
-  flex-shrink: 0; /* Prevents this flex item from shrinking. Works only when the parent element has display: flex. */
+  padding: 20px; 
+  flex-shrink: 0; /* Prevents this flex item from shrinking.Works only when the parent element has display: flex. */
 
-  /* works with Flexbox container */
+  /* woeks with  Flexbox container*/
   display: flex;
-  gap: 20px; /* Space between elements that are their parent */
-  flex-direction: column; /* Arranges the children of nav-panel in a column. Default row */
-  align-items: center; /* Centers the children on the horizontal axis. */
+  gap: 20px;/*Space between elements that are their parent */
+  flex-direction: column;/*Arranges the children of nav-panel in a column. Default row */
+  align-items: center;/*Centers the children on the horizontal axis.*/
+ 
 }
 
 .nav-panel .avatar img {
   width: 120px;
-  max-width: 100%;
-  height: auto;
-  border-radius: 50%; /* Circle the image. If the image is not square, it can appear elliptical. */
+  border-radius: 50%;/*Circle the image If the image is not square, it can appear elliptical.*/
   border: 3px solid #4ade80;
 }
 
@@ -50,28 +42,26 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  text-align: center; /* Centers the text within the element */
-  width: 100%;
+  text-align: center;/*Centers the text within the element*/
 }
 
 .nav-links a {
-  display: block; /* Turns the link into a block element, takes up the entire width, goes down a row. You can specify width, height, padding, margin. */
+  display: block;/*Turns the link into a block element, takes up the entire width, goes down a row. You can specify width, height, padding, margin.*/
   padding: 10px;
   border-radius: 5px;
-  cursor: pointer; /* Makes the mouse turn into a hand when hovering over the link. */
+  cursor: pointer;/*Makes the mouse turn into a hand when hovering over the link.*/
   color: #fff;
-  background-color: transparent; /* The link background is transparent by default. This means that you can see the background color of the panel behind it. */
-  transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Creates a smooth transition to the background color. */
+  background-color: transparent;/*The link background is transparent by default.This means that you can see the background color of the panel behind it.*/
+  transition: background-color 0.3s;/*Creates a smooth transition to the background color. When hovering and the background changes to green, the change will happen over 0.3 seconds and not all at once.*/
   text-align: center;
-  text-decoration: none; /* The default for links is an underline. Here we've disabled it to make it look like a button. */
+  text-decoration: none;/*The default for links is an underline. Here we've disabled it to make it look like a button.*/
   font-weight: 500;
-  font-size: 1.35rem;
+  font-size:30px
 }
 
 .nav-links a:hover {
   background-color: #4ade80;
   color: #1f2937;
-  transform: translateY(-2px);
 }
 
 .nav-links a.active {
@@ -82,12 +72,11 @@ body {
 
 /* תוכן ראשי */
 .main-content {
-  flex: 1; /* Tells the main area to take up all the free space left next to the menu. */
-  min-width: 0; /* Prevents flex item from overflowing horizontally */
+  flex: 1;/*Tells the main area to take up all the free space left next to the menu.*/
   background-color: #fff;
   border-left: 1px solid #ddd;
-  position: relative; /* Specifies that the element will be relative to itself. */
-  height: 100vh; /* Sets the height of the main content to 100% of the screen height. */
+  position: relative;/*Specifies that the element will be relative to itself.*/
+  height: 100vh; /*Sets the height of the main content to 100% of the screen height.*/
 }
 
 .main-content iframe {
@@ -95,15 +84,37 @@ body {
   height: 100%;
   border: none;
   display: block;
-  overflow: auto; /* This means that if there is too much content inside the iframe, there will be scrolling. */
+  overflow: auto;/*This means that if there is too much content inside the iframe, there will be scrolling.*/
 }
 
+@media (max-width: 768px) {/*Meaning: All CSS inside this block will only apply to screens up to 768px wide. That is, tablet/mobile.*/
+  body {
+    flex-direction: column;/*Instead of the menu and content being next to each other, they will be one below the other.*/
+  }
+
+  .nav-panel {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;/*If the links do not fit the width of the screen, there will be horizontal scrolling. This is useful in a mobile menu.*/
+    padding: 10px;
+  }
+
+  .nav-panel .avatar {
+    display: none;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 10px;
+    width: auto;
+  }
+}
 .name-line {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centers all content horizontally */
+  justify-content: center;/*Centers all content horizontally*/
   gap: 10px;
-  flex-wrap: wrap; /* Allows a row to break into another row if there is not enough space. */
+  flex-wrap: wrap;/*Allows a row to break into another row if there is not enough space.*/
 }
 
 .name-title h1 {
@@ -114,84 +125,79 @@ body {
   letter-spacing: 1px;
 }
 
-/* ===== Tablet and mobile responsive layout ===== */
+
+/* ===== Mobile responsive fix ===== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.main-content iframe {
+  width: 100%;
+  border: none;
+}
+
+/* טאבלט ומובייל */
 @media (max-width: 768px) {
   body {
-    flex-direction: column; /* Instead of the menu and content being next to each other, they will be one below the other. */
-    min-height: 100vh;
-    overflow-y: auto;
+    display: block;
   }
 
   .nav-panel {
+    position: static;
     width: 100%;
     min-height: auto;
     height: auto;
-    flex-direction: row;
-    align-items: center;
-    overflow-x: auto; /* If the links do not fit the width of the screen, there will be horizontal scrolling. This is useful in a mobile menu. */
-    overflow-y: hidden;
-    padding: 12px 10px;
-    gap: 10px;
-  }
-
-  .nav-panel .avatar {
-    display: none;
+    padding: 16px 12px;
   }
 
   .nav-links {
+    display: flex;
     flex-direction: row;
-    gap: 8px;
-    width: 100%;
+    gap: 10px;
     overflow-x: auto;
     white-space: nowrap;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
   }
 
   .nav-links a {
     flex: 0 0 auto;
     font-size: 0.9rem;
-    padding: 9px 12px;
+    padding: 10px 14px;
     border-radius: 999px;
   }
 
   .main-content {
     width: 100%;
-    height: calc(100vh - 70px);
-    min-height: 0;
-    border-left: none;
+    margin: 0;
+    padding: 0;
   }
 
   .main-content iframe {
     width: 100%;
-    height: 100%;
-    min-height: 100%;
-  }
-
-  .name-title h1 {
-    font-size: 24px;
+    min-height: calc(100vh - 95px);
   }
 }
 
-/* ===== Small phones ===== */
+/* מובייל קטן */
 @media (max-width: 480px) {
   .nav-panel {
-    padding: 10px 8px;
-  }
-
-  .nav-links {
-    gap: 6px;
+    padding: 12px 10px;
   }
 
   .nav-links a {
-    font-size: 0.78rem;
-    padding: 8px 10px;
+    font-size: 0.82rem;
+    padding: 9px 12px;
   }
 
-  .main-content {
-    height: calc(100vh - 62px);
-  }
-
-  .name-title h1 {
-    font-size: 21px;
-  }
+  /* .main-content iframe {
+    min-height: calc(100vh - 85px);
+  } */
 }
