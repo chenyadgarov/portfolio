@@ -1,7 +1,16 @@
 /* ===== GENERAL RESET & BODY ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
-  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: "Segoe UI", sans-serif;
   background-color: #f8f9fa; /* אפור בהיר ונעים */
   color: #2e2e2e;
@@ -10,7 +19,7 @@ body {
 /* ===== TOP BANNER ===== */
 .top-banner {
   background-color: #fdf6f0; /* בז' רגוע */
-  padding: 4px 0;
+  padding: 8px 12px;
   text-align: center;
   border: 1px solid #ddd;
 }
@@ -18,8 +27,8 @@ body {
 .inner-box {
   background-color: white;
   margin: 0 auto;
-  padding: 6px 10px;
-  max-width: 700px;
+  padding: 8px 12px;
+  width: min(700px, 100%);
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
@@ -35,7 +44,7 @@ body {
 
 .name-title h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: clamp(22px, 5vw, 30px);
   font-family: "Georgia", serif;
   color: #333;
   letter-spacing: 1px;
@@ -43,7 +52,7 @@ body {
 
 .name-title p {
   margin: 4px 0 0;
-  font-size: 15px;
+  font-size: clamp(13px, 3vw, 15px);
   color: #10b981;
   font-family: Arial, sans-serif;
 }
@@ -70,27 +79,29 @@ body {
 
 /* ===== RESUME CONTAINER ===== */
 .resume-container {
-  margin-top: 75px;
-  padding-right:160px;
-  padding-left: 160px;
-  display: flex;
-  justify-content: space-between;
+  width: min(1100px, calc(100% - 32px));
+  margin: 42px auto;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: minmax(240px, 0.85fr) minmax(0, 2fr);
+  gap: 0;
+
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  flex-grow: 1;
   background: #f0f2f5;
   border-left: 6px solid #10b981;
-  padding: 10px;
+  padding: clamp(16px, 3vw, 24px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow: visible;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
@@ -98,22 +109,23 @@ body {
 .sidebar h1 {
   margin: 4px 0;
   color: #10b981;
-  font-size: 18px;
+  font-size: clamp(18px, 3vw, 24px);
+  line-height: 1.2;
 }
 
 .sidebar .title {
-  margin: 0 0 6px;
+  margin: 0 0 10px;
   font-style: italic;
   color: #666;
-  font-size: 13px;
+  font-size: clamp(13px, 2.5vw, 15px);
 }
 
 .sidebar h2 {
-  margin: 10px 0 5px;
-  font-size: 14px;
+  margin: 16px 0 8px;
+  font-size: clamp(15px, 2.8vw, 18px);
   color: #444;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 3px;
+  padding-bottom: 5px;
 }
 
 .sidebar ul {
@@ -123,14 +135,16 @@ body {
 }
 
 .sidebar ul li {
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   color: #444;
-  font-size: 13px;
+  font-size: clamp(13px, 2.5vw, 15px);
+  line-height: 1.45;
 }
 
 .sidebar a {
   color: #10b981;
   text-decoration: none;
+  word-break: break-word;
 }
 
 .sidebar a:hover {
@@ -139,30 +153,83 @@ body {
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
-  flex-grow: 2;
-  background-color: #ddd;
-  padding: 10px;
+  background-color: #f7f7f7;
+  padding: clamp(18px, 3.5vw, 28px);
   box-sizing: border-box;
-  overflow: auto;
+  overflow: visible;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
 .main-content h2 {
   color: #10b981;
-  font-size: 16px;
+  font-size: clamp(17px, 3vw, 22px);
   border-bottom: 1px solid #ddd;
-  padding-bottom: 3px;
-  margin: 8px 0 4px;
+  padding-bottom: 5px;
+  margin: 16px 0 8px;
 }
 
 .main-content p,
 .main-content li {
-  font-size: 13px;
-  line-height: 1.4;
-  margin: 3px 0;
+  font-size: clamp(13px, 2.4vw, 15px);
+  line-height: 1.55;
+  margin: 5px 0;
+}
+
+.main-content ul {
+  padding-right: 18px;
+  margin: 6px 0 10px;
 }
 
 .job {
-  margin-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 850px) {
+  .resume-container {
+    grid-template-columns: 1fr;
+    width: min(760px, calc(100% - 24px));
+    margin: 28px auto;
+  }
+
+  .sidebar {
+    border-left: none;
+    border-top: 6px solid #10b981;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .main-content {
+    border-radius: 0 0 12px 12px;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 520px) {
+  .top-banner {
+    padding: 6px 8px;
+  }
+
+  .inner-box {
+    padding: 8px 10px;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .resume-container {
+    width: calc(100% - 16px);
+    margin: 18px auto 32px;
+    border-radius: 10px;
+  }
+
+  .sidebar,
+  .main-content {
+    padding: 16px;
+  }
+
+  .main-content ul {
+    padding-right: 16px;
+  }
 }
