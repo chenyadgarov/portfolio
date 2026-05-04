@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact | Chen Yadgarov</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styleContact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+
+  <main class="contact-page">
+
+    <section class="contact-hero">
+      <div class="contact-icon">
+        <i class="fa-solid fa-paper-plane"></i>
+      </div>
+
+      <span class="page-label">Get In Touch</span>
+      <h1>Contact Me</h1>
+      <p>
+        Have a question, opportunity, or project idea? Send me a message and I’ll get back to you.
+      </p>
+    </section>
+
+    <section class="contact-layout">
+
+      <!-- Contact Form -->
+      <form id="contact-form" class="contact-form">
+
+        <div class="form-header">
+          <h2>Send a Message</h2>
+          <p>Fill in your details and I’ll receive your message directly.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="from_name" placeholder="Enter your name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="from_email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Write your message" required></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="send-button">
+            <i class="fa-solid fa-paper-plane"></i>
+            Send Message
+          </button>
+
+          <button type="button" id="clear-button" class="clear-button">
+            Clear
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Contact Info -->
+      <aside class="contact-info">
+
+        <div class="info-title">
+          <h2>Contact Info</h2>
+          <p>You can also find me here:</p>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+
+          <div>
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:chenYadgarov1601@gmail.com">
+                chenYadgarov1601@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+
+          <div>
+            <h3>Phone</h3>
+            <p>
+              <a href="tel:+972523229587">
+                +972-52-322-9587
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+
+          <div>
+            <h3>Location</h3>
+            <p>Holon, Israel</p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <i class="fa-brands fa-linkedin"></i>
+          </div>
+
+          <div>
+            <h3>LinkedIn</h3>
+            <p>
+              <a href="https://linkedin.com/in/chen-levi-12353b30" target="_blank" rel="noopener noreferrer">
+                linkedin.com/in/chen
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <i class="fa-brands fa-github"></i>
+          </div>
+
+          <div>
+            <h3>GitHub</h3>
+            <p>
+              <a href="https://github.com/chenyadgarov" target="_blank" rel="noopener noreferrer">
+                github.com/chenyadgarov
+              </a>
+            </p>
+          </div>
+        </div>
+
+      </aside>
+
+    </section>
+
+  </main>
+
+  <!-- EmailJS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("contact-form");
+      const clearBtn = document.getElementById("clear-button");
+
+      emailjs.init("x4mLA1Ko8A2p73957");
+      console.log("EmailJS initialized");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const from_name = form.querySelector('[name="from_name"]').value;
+        const from_email = form.querySelector('[name="from_email"]').value;
+        const message = form.querySelector('[name="message"]').value;
+
+        emailjs
+          .sendForm("service_xqckdco", "template_s7ia31r", form)
+          .then(function (response) {
+            console.log("SUCCESS! Message sent to you", response.status, response.text);
+
+            const templateParams = {
+              from_name: from_name,
+              from_email: from_email,
+              message: message,
+              to_email: from_email,
+            };
+
+            emailjs
+              .send("service_xqckdco", "template_user_copy", templateParams)
+              .then(function (res) {
+                console.log("Copy sent to user!", res.status, res.text);
+              })
+              .catch(function (err) {
+                console.error("FAILED sending copy to user", err);
+              });
+
+            alert("✅ ההודעה נשלחה בהצלחה!");
+            form.reset();
+          })
+          .catch(function (error) {
+            console.error("FAILED sending message to you", error);
+            alert("❌ שגיאה בשליחה. בדקי את הקונסול לפרטים: " + JSON.stringify(error));
+          });
+      });
+
+      clearBtn.addEventListener("click", function () {
+        form.reset();
+        console.log("Form cleared manually");
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,603 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #20252b;
+  color: #222;
+}
+
+.resume-page {
+  min-height: 100vh;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-section {
+  padding: 45px 40px 70px;
+  background: linear-gradient(135deg, #010b17, #29446a);
+}
+
+/* כרטיסי יצירת קשר למעלה */
+.contact-cards {
+  width: min(1300px, 94%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card {
+  min-height: 110px;
+  background-color: #d94b17;
+  color: white;
+  border-radius: 18px;
+  padding: 22px 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card .icon {
+  font-size: 36px;
+  opacity: 0.95;
+  flex-shrink: 0;
+}
+
+.contact-card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contact-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.contact-card a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* הכרטיס העליון - About */
+.about-card {
+  width: min(850px, 88%);
+  margin: 105px auto 0;
+  padding: 82px 65px 48px;
+
+  background-color: #eeeeee;
+  border-radius: 24px;
+  text-align: center;
+
+  position: relative;
+  z-index: 3;
+
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.25);
+}
+
+.profile-circle {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #0b5d3b, #16c98d);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  position: absolute;
+  top: -62px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border: 7px solid #eeeeee;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.about-card h1 {
+  margin: 0 0 14px;
+  font-size: 52px;
+  line-height: 1;
+  color: #111;
+  font-weight: 700;
+}
+
+.about-card h2 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  color: #0b5d3b;
+  font-weight: 700;
+}
+
+.about-card h3 {
+  margin: 0 0 24px;
+  font-size: 23px;
+  color: #d94b17;
+  font-weight: 700;
+}
+
+.about-card p {
+  max-width: 700px;
+  margin: 0 auto;
+
+  font-size: 18px;
+  line-height: 1.75;
+  color: #222;
+}
+
+/* =========================
+   RESUME DETAILS SECTION
+========================= */
+
+.resume-details {
+  padding: 70px 34px 95px;
+  background:
+    radial-gradient(circle at top left, rgba(15, 191, 132, 0.16), transparent 32%),
+    linear-gradient(180deg, #f7f7f7, #eeeeee);
+}
+
+.section-title {
+  width: min(1200px, 96%);
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.section-title span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #d94b17;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 46px;
+  color: #20252b;
+}
+
+.section-title p {
+  max-width: 850px;
+  margin: 16px auto 0;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* כאן הרחבתי את כל החלק התחתון */
+.resume-grid {
+  width: min(1500px, 96%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.05fr 1.05fr;
+  gap: 32px;
+}
+
+.resume-card {
+  background-color: white;
+  border-radius: 28px;
+  padding: 42px;
+
+  box-shadow: 0 18px 45px rgba(32, 37, 43, 0.1);
+  border: 1px solid rgba(32, 37, 43, 0.08);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 26px 55px rgba(32, 37, 43, 0.16);
+}
+
+.wide-card {
+  grid-column: 1 / -1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+.card-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+
+  background-color: #0fbf84;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+  box-shadow: 0 12px 25px rgba(15, 191, 132, 0.25);
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 31px;
+  color: #20252b;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skill-group {
+  margin-bottom: 28px;
+}
+
+.skill-group:last-child {
+  margin-bottom: 0;
+}
+
+.skill-group h4 {
+  margin: 0 0 14px;
+  font-size: 21px;
+  color: #0b5d3b;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tags span {
+  padding: 11px 17px;
+  border-radius: 999px;
+
+  background-color: #f0f7f4;
+  color: #0b5d3b;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* =========================
+   EDUCATION
+========================= */
+
+.highlight-box {
+  padding: 28px;
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(15, 191, 132, 0.12), rgba(217, 75, 23, 0.08));
+  border: 1px solid rgba(15, 191, 132, 0.16);
+}
+
+.highlight-box h4 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  color: #0b5d3b;
+}
+
+.highlight-box p {
+  margin: 0 0 10px;
+  font-size: 19px;
+  color: #333;
+}
+
+.highlight-box span {
+  color: #d94b17;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-text {
+  margin: 24px 0 0;
+  font-size: 18px;
+  line-height: 1.85;
+  color: #444;
+}
+
+/* =========================
+   WORK EXPERIENCE - TIMELINE
+========================= */
+
+.timeline {
+  position: relative;
+  padding-left: 34px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 6px;
+  bottom: 6px;
+
+  width: 4px;
+  border-radius: 10px;
+  background: linear-gradient(#0fbf84, #d94b17);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -34px;
+  top: 8px;
+
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+
+  background-color: white;
+  border: 5px solid #0fbf84;
+  box-shadow: 0 0 0 7px rgba(15, 191, 132, 0.12);
+}
+
+.timeline-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: baseline;
+}
+
+.timeline-title h4 {
+  margin: 0;
+  font-size: 26px;
+  color: #20252b;
+}
+
+.timeline-title span {
+  color: #d94b17;
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.role {
+  margin: 10px 0 20px;
+  color: #0b5d3b;
+  font-size: 19px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.timeline-content ul {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.timeline-content li {
+  margin-bottom: 12px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: #444;
+}
+
+/* =========================
+   KNOWLEDGE
+========================= */
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clean-list li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 18px;
+
+  font-size: 18px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.clean-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: #d94b17;
+}
+
+/* =========================
+   LANGUAGES
+========================= */
+
+.language-list {
+  display: grid;
+  gap: 18px;
+}
+
+.language-item {
+  padding: 21px 24px;
+  border-radius: 20px;
+  background-color: #f7f7f7;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.language-item span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #20252b;
+}
+
+.language-item strong {
+  color: #0b5d3b;
+  font-size: 17px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .hero-section {
+    padding: 40px 28px 70px;
+  }
+
+  .contact-cards {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+  }
+
+  .about-card {
+    margin-top: 115px;
+  }
+
+  .resume-grid {
+    grid-template-columns: 1fr;
+    width: min(900px, 94%);
+  }
+
+  .wide-card {
+    grid-column: auto;
+  }
+
+  .timeline-title {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 32px 16px 65px;
+  }
+
+  .contact-card {
+    padding: 22px;
+    min-height: auto;
+  }
+
+  .contact-card .icon {
+    font-size: 32px;
+  }
+
+  .contact-card h3 {
+    font-size: 17px;
+  }
+
+  .contact-card p {
+    font-size: 15px;
+  }
+
+  .about-card {
+    width: 100%;
+    margin-top: 105px;
+    padding: 75px 24px 40px;
+  }
+
+  .profile-circle {
+    width: 115px;
+    height: 115px;
+    top: -57px;
+    font-size: 34px;
+  }
+
+  .about-card h1 {
+    font-size: 42px;
+  }
+
+  .about-card h2 {
+    font-size: 24px;
+  }
+
+  .about-card h3 {
+    font-size: 19px;
+  }
+
+  .about-card p {
+    font-size: 16px;
+  }
+
+  .resume-details {
+    padding: 58px 16px 75px;
+  }
+
+  .section-title h2 {
+    font-size: 32px;
+  }
+
+  .section-title p {
+    font-size: 16px;
+  }
+
+  .resume-card {
+    padding: 26px;
+  }
+
+  .card-header h3 {
+    font-size: 24px;
+  }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 25px;
+  }
+
+  .timeline {
+    padding-left: 24px;
+  }
+
+  .timeline-dot {
+    left: -28px;
+  }
+
+  .timeline-title h4 {
+    font-size: 22px;
+  }
+
+  .timeline-title span,
+  .role,
+  .timeline-content li,
+  .clean-list li,
+  .card-text {
+    font-size: 16px;
+  }
+
+  .tags span {
+    font-size: 14px;
+  }
+}

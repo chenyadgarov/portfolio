@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chen Yadgarov | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <aside class="nav-panel">
+    <nav class="nav-links">
+      <a href="home.html" target="main-frame" class="active">🏠 Home</a>
+      <a href="projects.html" target="main-frame">📁 Projects</a>
+      <a href="resumee.html" target="main-frame">📄 Resume</a>
+      <a href="certificates.html" target="main-frame">🎓 Certificates</a>
+      <a href="contact.html" target="main-frame">📬 Contact</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <iframe name="main-frame" src="home.html"></iframe>
+  </main>
+  <script>
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.forEach(function (item) {
+          item.classList.remove("active");
+        });
+
+        link.classList.add("active");
+      });
+    });
+  </script>
+</body>
+
+</html>
